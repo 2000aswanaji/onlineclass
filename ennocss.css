@@ -1,0 +1,201 @@
+.arrow {
+      position: fixed;
+      visibility:hidden;
+      opacity: 0;
+      right: 15px;
+      bottom: 15px;
+      z-index: 996;
+      background: #20c997;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all 0.4s;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    .arrow.active {
+      visibility: visible;
+      opacity: 1;
+    }
+      a.play-btn {
+        text-decoration: none;
+        color: black;
+      }
+      a.play-btn:hover {
+        color: green;
+      }
+      .img {
+        width: 400px;
+        height: 400px;
+        animation: floater 3s ease-in-out 0s infinite;
+      }
+      @keyframes floater {
+        0% {
+          transform: translateY(0%);
+          transition: ease-in-out 0.4s;
+        }
+        50% {
+          transform: translateY(-5%);
+          transition: ease-in-out 0.4s;
+        }
+      }
+      .box {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+        text-align: left;
+        transition: all 1s ease-out;
+        transform: translateY(0);
+      }
+      .container i {
+        color: green;
+        font-size: 2rem;
+      }
+      .box h4 {
+        color: black;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+     
+      .box:hover {
+        h4{
+          color: green;
+        }
+        transform: translateY(-10px);
+      }
+      .shadow-div{
+        position: relative;
+        
+      }
+      .child{
+        position: absolute;
+        
+      }
+      .shadow-text{
+        color: gray;
+        opacity: .1;
+        filter: blur(1px);
+      }
+      .service-box {
+      text-align: center;
+      padding: 40px;
+      border: 1px solid #eee; 
+      border-radius: 8px;
+      transition: all 0.3s ease; 
+    }
+    .service-box:hover {
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.05);
+      border-color:green;
+    }
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background-color:rgb(39, 201, 112);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      margin: 0 auto 20px auto; 
+      font-size: 1.5rem;
+    }
+    .icon-box i{
+       color: white;
+    }
+    .service-title {
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .service-text {
+      color: #777;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .service-title:hover{
+        color: green;
+        cursor: pointer;
+    }
+    .btn:hover{
+       color:green
+    }
+    .hidden-card{
+      visibility:hidden;
+      transition: all 0.1s ease-out;
+      transform: translateY(0);
+      opacity: 0.8;
+      padding: 15px;
+    }
+    .card:hover{
+      .hidden-card{
+        visibility: visible;
+        transform: translateY(-10px);
+      }
+
+    }
+    .testimonial-item{
+      background-color: transparent;
+      position:relative;
+      }
+      .testimonial-text{
+        background-color:rgba(211, 212, 214, 0.32);
+      }
+      .testimonial-name{
+        position: absolute;
+        top: 180px;
+       }
+      .card-body{
+        background-color:transparent;
+       }
+     .testimonial-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%; 
+      border: 6px solid #fff; 
+      margin-bottom: -45px;
+      position: relative; 
+      z-index: 2; 
+    }
+    .testimonial-item h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      color: #111;
+    }
+    .testimonial-item h4 {
+      font-size: 14px;
+      color: #999;
+      margin: 0;
+    }
+    .quote-icon-left, .quote-icon-right {
+      color:green;
+      font-size: 26px;
+    }
+    .quote-icon-left {
+      display: inline-block;
+      left: -5px;
+      position: relative;
+    }
+    .quote-icon-right {
+      display: inline-block;
+      right: -5px;
+      position: relative;
+      }
+      .call-section{
+        margin-top: 200px;
+        margin-bottom: 200px;
+      }
+      .team-card{
+        border: none;
+        background-color: white;
+        
+      }
+      .team-card img{
+        height: 300px;
+        width: 300px;
+
+      }
