@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>table booking</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url("beach-wallpaper-3840x2160-sandy-shore-sunset-12590.jpg");
+        background-position: center;
+        background-repeat: repeat-y;
+        background-size: cover;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #register-page {
+        width: 500px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f5f0f0ca;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .shadow-div {
+        width: 100vw;
+        height: 300px;
+        background-color: #f5f0f0ca;
+        position: relative;
+      }
+      .child {
+        position: absolute;
+      }
+      .shadow-text {
+        color: rgb(0, 0, 0);
+        opacity: 0.2;
+        filter: blur(1px);
+        font-size: 100px;
+      }
+      .child h1 {
+        font-size: 80px;
+      }
+      .table-book {
+        background-color: #f5f0f0ca;
+        width: 500px;
+        color: black;
+      }
+      .table-book:hover {
+        background-color: rgb(18, 17, 17);
+        color: white;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        margin-top: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .error-message {
+        color: #dc3545;
+        font-size: 15px;
+        display: none;
+      }
+      .valid-message {
+        display: none !important;
+      }
+      .first_error {
+        color: #dc3545;
+        font-size: 15px;
+        display: block;
+      }
+      .fail_valid {
+        color: #dc3545;
+        font-size: 15px;
+        display: block;
+      }
+      .select-table {
+        visibility: hidden;
+        transition: all 0.1s ease-out;
+        transform: translateY(0);
+        opacity: 0.8;
+        padding: 10px;
+      }
+      .card {
+        width: 300px;
+        height: 200px;
+      }
+      .card:hover {
+        .select-table {
+          visibility: visible;
+          transform: translateY(-10px);
+        }
+      }
+      .book-button {
+        background-color: #f5f0f0ca;
+        width: 500px;
+        color: black;
+      }
+      .book-button:hover {
+        background-color: rgb(18, 17, 17);
+        color: white;
+      }
+      .select-table {
+        background-color: #2a2929ca;
+        width: 150px;
+        color: rgb(255, 255, 255);
+      }
+      .select-table:hover {
+        background-color: black;
+        color: white;
+      }
+      .logout-btn {
+        background-color: transparent;
+        width: 100px;
+        color: rgb(255, 255, 255);
+        position: absolute;
+        top: 20px;
+        right: 100px;
+      }
+      .logout-btn:hover {
+        background-color: rgba(180, 178, 178, 0.648);
+        color: red;
+      }
+      .is-selected {
+        background-color: blue !important;
+        color: white;
+        transform: scale(1.02);
+        border: 2px solid darkblue;
+      }
+
+      .is-booked {
+        background-color: #e74c3c !important;
+        color: white;
+        pointer-events: none;
+      }
+      .btn-seleced {
+        background-color: white;
+        color: black;
+      }
+      .scs-prompt,
+      .err-prompt {
+        width: 250px;
+        height: auto;
+        padding: 15px;
+        position: fixed; /* Ensures it stays in place when scrolling */
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%); /* Centers it perfectly */
+        display: none; /* Hide it properly */
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 1000;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="welcome-page"
+      class="page d-flex justify-content-center align-items-center flex-column hidden"
+    >
+      <div class="shadow-div d-flex justify-content-center align-items-center">
+        <h1 class="shadow-text fw-bold display-4 mb-5 mt-0">AZURE TABLE</h1>
+        <div
+          class="child mt-5 d-flex justify-content-center align-items-center flex-column"
+        >
+          <h1 class="fw-bold">AZURE TABLE</h1>
+          <h3 class="mb-0 mt-0">​"Where the horizon meets your plate."</h3>
+        </div>
+      </div>
+      <button class="table-book rounded-pill" onclick="showPage('login-page')">
+        Book your Table Now
+      </button>
+    </div>
+    <div class="container">
+      <div id="register-page" class="page">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+        <h2 style="text-align: center">Register Here</h2>
+
+        <label>Full Name</label>
+        <input
+          type="text"
+          id="regname"
+          name="fullname"
+          placeholder="Enter your first name"
+        />
+        <div class="error-message" id="regname-Error">
+          Please enter your full name.
+        </div>
+
+        <label>Email Address</label>
+        <input
+          type="email"
+          id="regemail"
+          name="email"
+          placeholder="example@mail.com"
+        />
+        <div class="error-message" id="regemail-Error">
+          Please enter your Email Address.
+        </div>
+        <label class="-label">Phone number</label>
+        <input
+          type="number"
+          class="regphone"
+          id="phone"
+          placeholder="Enter your Phone number"
+        />
+        <div class="error-message" id="phone-Error">
+          Please enter your Phone number.
+        </div>
+        <div class="valid-message" id="valid-Error">
+          Please enter your 10 digit Phone number.
+        </div>
+        <div class="valid-message" id="digit-error">
+          Please enter a valid Phone number.
+        </div>
+
+        <label>Password</label>
+        <input
+          type="password"
+          id="regpasd"
+          name="password"
+          placeholder="Create a password"
+        />
+        <div class="error-message" id="min-Error">
+          Password must contain atleast 6 characters.
+        </div>
+        <div class="error-message" id="regpasd-Error">
+          Please enter your Password.
+        </div>
+        <label> Confirm Password</label>
+        <input
+          type="password"
+          id="cnfpasd"
+          name="password"
+          placeholder=" Confirm password"
+        />
+        <div class="error-message" id="cnfpasd-Error">
+          Retype your Password.
+        </div>
+        <div class="error-message" id="password-Error">
+          Password and Confirm Password Must Be Same
+        </div>
+
+        <button type="submit" onclick="register()">Register Now</button>
+        <p>
+          Already have an account?
+          <a href="#" onclick="showPage('login-page')">Login</a>
+        </p>
+        <p>Back to <a href="#" onclick="showPage('welcome-page')">Home</a></p>
+      </div>
+
+      <div id="login-page" class="page hidden">
+        <h2>Login</h2>
+        <div class="error-message" id="invalid-Error">
+          Invalid Email or Password
+        </div>
+        <input type="text" id="login-email" placeholder="Email" />
+        <input type="password" id="login-pass" placeholder="Password" />
+        <button onclick="login()">Login</button>
+        <p>
+          New here? <a href="#" onclick="showPage('register-page')">Register</a>
+        </p>
+      </div>
+    </div>
+    <div
+      id="booking-page"
+      class="page container my-5 mb-5 d-flex justify-content-center align-items-center flex-column hidden"
+    >
+      <button class="logout-btn" onclick="logout()">Logout</button>
+      <div class="scs-prompt" id="success">
+        Table Booked Successfully!
+        <button onclick="date()">ok</button>
+      </div>
+      <div class="err-prompt" id="error-prompt">
+        Please select a table first!
+      </div>
+      <p id="welcome-msg" class="display-4 text-light"></p>
+      <h2 class="text-light display-4">FIND YOUR TABLE</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div
+            class="card position-relative d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              class="select-table hidden-card position-absolute bottom-0"
+              id="table-select"
+            >
+              Select table
+            </button>
+            <h2>Table-1</h2>
+            <h3 id="booked-tag"></h3>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card position-relative d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              class="select-table hidden-card position-absolute bottom-0"
+              id="table-select"
+            >
+              Select table
+            </button>
+            <h2>Table-2</h2>
+            <h3 id="booked-tag"></h3>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card position-relative d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              class="select-table hidden-card position-absolute bottom-0"
+              id="table-select"
+            >
+              Select table
+            </button>
+            <h2>Table-3</h2>
+            <h3 id="booked-tag"></h3>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card position-relative d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              class="select-table hidden-card position-absolute bottom-0"
+              id="table-select"
+            >
+              Select table
+            </button>
+            <h2>Table-4</h2>
+            <h3 id="booked-tag"></h3>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card position-relative d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              class="select-table hidden-card position-absolute bottom-0"
+              id="table-select"
+            >
+              Select table
+            </button>
+            <h2>Table-5</h2>
+            <h3 id="booked-tag"></h3>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card position-relative d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              class="select-table hidden-card position-absolute bottom-0"
+              id="table-select"
+            >
+              Select table
+            </button>
+            <h2>Table-6</h2>
+            <h3 id="booked-tag"></h3>
+          </div>
+        </div>
+      </div>
+      <button class="book-button rounded-pill" onclick="confirmBooking()">
+        Book Table
+      </button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        register();
+        login();
+        confirmBooking();
+        logout();
+      });
+      function showPage(pageId) {
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.add("hidden");
+        });
+
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+          targetPage.classList.remove("hidden");
+        } else {
+          console.error(`Page not found.`);
+        }
+      }
+      function register() {
+        var inputs = document.querySelectorAll("input");
+        var required = true;
+        inputs.forEach(function (item) {
+          item.style.borderColor = "";
+          var error = document.getElementById(item.id + "-Error");
+          if (error) error.style.display = "none";
+        });
+
+        document.getElementById("valid-Error").className = "valid-message";
+        document.getElementById("digit-error").className = "valid-message";
+        inputs.forEach(function (item) {
+          if (item.value.trim() === "") {
+            required = false;
+            var error = document.getElementById(item.id + "-Error");
+            if (error) {
+              error.style.display = "block";
+              item.style.borderColor = "red";
+            }
+          }
+        });
+        var valid_phone = document.getElementById("phone");
+        var phoneValue = valid_phone.value;
+        if (phoneValue !== "") {
+          if (phoneValue.length !== 10) {
+            required = false;
+            document.getElementById("valid-Error").className = "fail_valid";
+            valid_phone.style.borderColor = "red";
+          } else {
+            var firstDigit = phoneValue.charAt(0);
+            if (!["9", "8", "6"].includes(firstDigit)) {
+              required = false;
+              document.getElementById("digit-error").className = "first_error";
+              valid_phone.style.borderColor = "red";
+            }
+          }
+        }
+        const name = document.getElementById("regname").value;
+        const email = document.getElementById("regemail").value;
+        const pass = document.getElementById("regpasd").value;
+        const cnfpass = document.getElementById("cnfpasd").value;
+        const phone = document.getElementById("phone").value;
+        if (pass.length < 6) {
+          const pass2 = document.getElementById("regpasd");
+          const min = document.getElementById("min-Error");
+          min.style.display = "block";
+          pass2.style.borderColor = "red";
+        }
+        if (pass === cnfpass) {
+          if (email && pass) {
+            localStorage.setItem("username", name);
+            localStorage.setItem("useremail", email);
+            localStorage.setItem("userpass", pass);
+            localStorage.setItem("userphone", phone);
+            showPage("login-page");
+          }
+        } else {
+          const pss_error = document.getElementById("password-Error");
+          const error_pass = document.getElementById("cnfpasd");
+          pss_error.style.display = "block";
+          error_pass.style.borderColor = "red";
+        }
+      }
+
+      function login() {
+        const email = document.getElementById("login-email").value;
+        const pass = document.getElementById("login-pass").value;
+
+        const savedEmail = localStorage.getItem("useremail");
+        const savedPass = localStorage.getItem("userpass");
+        const savedname = localStorage.getItem("username");
+
+        if (email === savedEmail && pass === savedPass) {
+          console.log(savedname);
+
+          document.getElementById("welcome-msg").innerText =
+            "Hello, " + savedname;
+          showPage("booking-page");
+        } else {
+          const inv_error = document.getElementById("invalid-Error");
+          inv_error.style.display = "block";
+        }
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        confirmBooking();
+      });
+      function confirmBooking() {
+        const selectbuttons = document.querySelectorAll(".select-table");
+        const bookcnfbtn = document.querySelector(".book-button");
+
+        var table = null;
+
+        selectbuttons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            if (table) {
+              table.classList.remove("is-selected");
+            }
+            table = e.target.parentElement;
+            table.classList.add("is-selected");
+          });
+        });
+        bookcnfbtn.addEventListener("click", () => {
+          if (table) {
+            table.classList.remove("is-selected");
+            table.classList.add("is-booked");
+
+            const tablename = table.querySelector(".card ");
+            const btn = table.querySelector("#booked-tag");
+
+            if (btn) {
+              btn.innerText = "Is Booked";
+              localStorage.setItem("table no", tablename);
+            }
+            const smsg = document.getElementById("success");
+            smsg.style.color = "green";
+            smsg.style.display = "block";
+
+            table = null;
+          } else {
+            const esmg = document.getElementById("error-prompt");
+            esmg.style.color = "red";
+            esmg.style.display = "block";
+            setTimeout(() => {
+              esmg.style.display = "none";
+            }, 3000);
+          }
+        });
+      }
+
+      function logout() {
+        showPage("login-page");
+      }
+    </script>
+  </body>
+</html>
