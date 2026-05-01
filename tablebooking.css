@@ -1,0 +1,193 @@
+body {
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("beach-wallpaper-3840x2160-sandy-shore-sunset-12590.jpg");
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#register-page {
+  width: 500px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f5f0f0ca;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shadow-div {
+  width: 100vw;
+  height: 300px;
+  background-color: #f5f0f0ca;
+  position: relative;
+}
+.child {
+  position: absolute;
+}
+.shadow-text {
+  color: rgb(0, 0, 0);
+  opacity: 0.2;
+  filter: blur(1px);
+  font-size: 100px;
+}
+.child h1 {
+  font-size: 80px;
+}
+.table-book {
+  background-color: #f5f0f0ca;
+  width: 500px;
+  color: black;
+}
+.table-book:hover {
+  background-color: rgb(18, 17, 17);
+  color: white;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+button:hover {
+  background-color: #218838;
+}
+.hidden {
+  display: none !important;
+}
+.error-message {
+  color: #dc3545;
+  font-size: 15px;
+  display: none;
+}
+.valid-message {
+  display: none !important;
+}
+.first_error {
+  color: #dc3545;
+  font-size: 15px;
+  display: block;
+}
+.fail_valid {
+  color: #dc3545;
+  font-size: 15px;
+  display: block;
+}
+.select-table {
+  visibility: hidden;
+  transition: all 0.1s ease-out;
+  transform: translateY(0);
+  opacity: 0.8;
+  padding: 10px;
+}
+.card {
+  width: 300px;
+  height: 200px;
+}
+.card:hover {
+  .select-table {
+    visibility: visible;
+    transform: translateY(-10px);
+  }
+}
+.book-button {
+  background-color: #f5f0f0ca;
+  width: 500px;
+  color: black;
+}
+.book-button:hover {
+  background-color: rgb(18, 17, 17);
+  color: white;
+}
+.select-table {
+  background-color: #2a2929ca;
+  width: 150px;
+  color: rgb(255, 255, 255);
+}
+.select-table:hover {
+  background-color: black;
+  color: white;
+}
+.logout-btn {
+  background-color: transparent;
+  width: 100px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}
+.logout-btn:hover {
+  background-color: rgba(180, 178, 178, 0.648);
+  color: red;
+}
+.is-selected {
+  background-color: blue !important;
+  color: white;
+  transform: scale(1.02);
+  border: 2px solid darkblue;
+}
+
+.is-booked {
+  background-color: #e74c3c !important;
+  color: white;
+  pointer-events: none;
+}
+.btn-seleced {
+  background-color: white;
+  color: black;
+}
+.scs-prompt,
+.err-prompt {
+  width: 250px;
+  height: auto;
+  padding: 15px;
+  position: fixed; /* Ensures it stays in place when scrolling */
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%); /* Centers it perfectly */
+  display: none; /* Hide it properly */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+  font-weight: bold;
+}
+#book-time {
+  width: 500px;
+  height: 40px;
+}
+#book-date{
+  width: 500px;
+}
