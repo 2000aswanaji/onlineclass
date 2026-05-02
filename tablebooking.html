@@ -27,11 +27,11 @@
       class="page d-flex justify-content-center align-items-center flex-column"
     >
       <div class="shadow-div d-flex justify-content-center align-items-center">
-        <h1 class="shadow-text fw-bold display-4 mb-5 mt-0">AZURE TABLE</h1>
+        <h1 class="shadow-text fw-bold display-4 mb-5 mt-0">ASSURE TABLE</h1>
         <div
           class="child mt-5 d-flex justify-content-center align-items-center flex-column"
         >
-          <h1 class="fw-bold">AZURE TABLE</h1>
+          <h1 class="fw-bold">ASSURE TABLE</h1>
           <h3 class="mb-0 mt-0">​"Where the horizon meets your plate."</h3>
         </div>
       </div>
@@ -241,8 +241,9 @@
     </div>
     <div
       id="date-page"
-      class="d-flex justify-content-center align-items-center flex-column gap-5 hidden"
+      class="page d-flex justify-content-center align-items-center flex-column gap-3 hidden"
     >
+      <button class="logout-btn" onclick="logout()">Logout</button>
       <p id="welcome-msg2" class="display-4 text-light"></p>
       <h2 class="text-light display-4 mb-5">Your Almost there</h2>
       <p class="display-6 text-light">Set Your Date we'll Be Waiting For You</p>
@@ -250,17 +251,74 @@
       <input type="date" id="book-date" />
       <div class="error-message" id="time-Error">Please Select a Time</div>
       <select id="book-time">
-        <option value="18:00">9:00 AM</option>
-        <option value="20:00">10:00 AM</option>
-        <option value="20:00">11:00 AM</option>
-        <option value="20:00">12:00 PM</option>
-        <option value="20:00">1:00 pM</option>
-        <option value="20:00">8:00 PM</option>
-        <option value="20:00">10:00 PM</option>
-        <option value="20:00">11:00 PM</option>
+        <option value="">choose time</option>
+        <option value="9:00">9:00 AM</option>
+        <option value="10:00">10:00 AM</option>
+        <option value="11:00">11:00 AM</option>
+        <option value="12:00">12:00 PM</option>
+        <option value="1:00">1:00 pM</option>
+        <option value="8:00">8:00 PM</option>
+        <option value="10:00">10:00 PM</option>
+        <option value="11:00">11:00 PM</option>
       </select>
       <button class="book-button rounded-pill" onclick="finalize()">
         Confirm Booking
+      </button>
+    </div>
+    <div id="details-page" class="page confirmation-card hidden">
+      <button class="logout-btn" onclick="logout()">Logout</button>
+      <h1>AWESOME! WE LOOKING FORWARD TO SEE YOU</h1>
+      <p class="address">BOOKING DETAILS</p>
+
+      <div class="booking-details">
+        <div class="info-column">
+          <div class="detail-item">
+            <span class="icon">👤</span>
+            <span id="disp_name"></span>
+          </div>
+          <div class="detail-item">
+            <span class="icon">🍜</span>
+            <span id="disp_table"></span>
+          </div>
+          <div class="detail-item">
+            <span class="icon">📅</span>
+            <span id="disp_date"></span>
+          </div>
+          <div class="detail-item">
+            <span class="icon">🕒</span>
+            <span id="disp_time"></span>
+          </div>
+        </div>
+
+        <div class="status-column">
+          <div class="checkmark-circle">
+            <div class="checkmark"></div>
+          </div>
+          <p class="status-text">Confirmed</p>
+        </div>
+      </div>
+
+      <p>
+        Your table is booked till two hours from reservation time . Tables are
+        kept for 15 min after reservation time.
+      </p>
+      <p class="greeting">Have a nice day.</p>
+      <button class="logout-bt" onclick="showPage('welcome-page')">
+        Back to home
+      </button>
+    </div>
+    <div id="errorpage" class="page error-card hidden">
+      <h1>Please try again</h1>
+      <p class="sorry">Something went wrong</p>
+      <div class="error_div">
+        <span class="error_icon">❗</span>
+      </div>
+      <div class="error_detail">
+        <p class="sorry2">we couldn't book the table.</p>
+        <p class="sorry2">Please reload the page and try again.</p>
+      </div>
+      <button class="error_btn" onclick="showPage('booking-page')">
+        Go Back
       </button>
     </div>
 

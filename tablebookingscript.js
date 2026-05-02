@@ -119,7 +119,6 @@ function confirmBooking() {
       if (btn) {
         btn.innerText = "Is Booked";
         const table_store = tablename.innerText.trim();
-        console.log(table_store);
 
         localStorage.setItem("table_no", table_store);
       }
@@ -145,8 +144,6 @@ function display() {
   document.getElementById("welcome-msg2").innerText =
     "Hi, " + showname + " " + showtno + " is waiting for you";
   showPage("date-page");
-  console.log(showname);
-  console.log(showtno);
 }
 function finalize() {
   const date = document.getElementById("book-date").value;
@@ -155,13 +152,36 @@ function finalize() {
   const valid_time = document.getElementById("book-time");
   const date_error = document.getElementById("date-Error");
   const time_error = document.getElementById("time-Error");
-
-  if (date && time) {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate() - 1;
+  const today = `${year}-${String(month).padStart(2, "0")}-${String(
+    day
+  ).padStart(2, "0")}`;
+  if (date !== today) {
+    if (date && time) {
+      const showname = localStorage.getItem("username");
+      const showtno = localStorage.getItem("table_no");
+      document.getElementById("disp_name").innerText = showname;
+      document.getElementById("disp_date").innerText = date;
+      document.getElementById("disp_time").innerText = time;
+      document.getElementById("disp_table").innerText = showtno;
+      showPage("details-page");
+    } else if (!date && !time) {
+      if (!date) {
+        date_error.style.display = "block";
+        valid_date.style.borderColor = "red";
+      }
+      if (!time) {
+        time_error.style.display = "block";
+        valid_time.style.borderColor = "red";
+      }
+    } else {
+      showPage("date-page");
+    }
   } else {
-    date_error.style.display = "block";
-    valid_date.style.borderColor = "red";
-    time_error.style.display = "block";
-    valid_time.style.borderColor = "red";
+    showPage("errorpage");
   }
 }
 

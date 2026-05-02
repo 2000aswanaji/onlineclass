@@ -2,7 +2,7 @@ body {
   height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
-  padding: 50px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,6 +188,156 @@ button:hover {
   width: 500px;
   height: 40px;
 }
-#book-date{
+#book-date {
   width: 500px;
+}
+#date-page {
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("beach.jpg");
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.confirmation-card {
+  background-color: #fff9f9b9;
+  padding: 40px;
+  width: 600px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  color: #000000;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #040404;
+}
+
+.address {
+  font-size: 30px;
+  margin: 0;
+  color: #0d0d0d;
+}
+
+.booking-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #0a0a0a;
+}
+
+.icon {
+  margin-right: 15px;
+  width: 25px;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.status-column {
+  text-align: center;
+}
+
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  border: 5px solid #4caf50;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 10px;
+}
+
+.checkmark {
+  width: 20px;
+  height: 40px;
+  border: solid #4caf50;
+  border-width: 0 6px 6px 0;
+  transform: rotate(45deg);
+  margin-bottom: 8px;
+}
+
+.status-text {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 20px;
+}
+.greeting {
+  margin-top: 30px;
+}
+.error-card {
+  width: 500px;
+  height: 500px;
+  background-color: #fff9f9b9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-card h1 {
+  font-size: 50px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #dd1b1b;
+}
+.sorry {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #dd1b1b;
+}
+.error_div {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 5px solid red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error_icon {
+  font-size: 50px;
+}
+.sorry2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #dd1b1b;
+}
+.error_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error_btn{
+  background-color: red;
+  color: white;
+  width: 100px;
+}
+.error_btn:hover{
+  background-color: rgb(126, 19, 19);
 }
